@@ -10,6 +10,6 @@ RUN apt-get update && apt-get install -y \
 
 # Clear luarocks cache and install kong-oidc plugin directly from GitHub
 RUN rm -rf /var/cache/luarocks/* && \
-    luarocks install https://github.com/nokia/kong-oidc/raw/master/kong-oidc-1.3.0-1.rockspec
+    luarocks install https://raw.githubusercontent.com/nokia/kong-oidc/refs/tags/v1.1.0/kong-oidc-1.1.0-0.rockspec
 
 USER kong

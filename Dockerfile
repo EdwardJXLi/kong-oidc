@@ -8,12 +8,7 @@ RUN apt-get update && apt-get install -y \
     luarocks \
     && rm -rf /var/lib/apt/lists/*
 
-# Create necessary directories for kong user
-RUN mkdir -p /home/kong/.luarocks /home/kong/.cache && \
-    chown -R kong:kong /home/kong/.luarocks /home/kong/.cache
+# Install kong-oidc plugin globally
+RUN luarocks install kong-oidc
 
 USER kong
-
-# Install kong-oidc and force dependency updates
-RUN luarocks install --local kong-oidc && \
-    luarocks install --local --force lua-resty-openidc 1.8.0-1
